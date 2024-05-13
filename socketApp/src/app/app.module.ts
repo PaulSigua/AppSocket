@@ -4,20 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MenuMainComponent } from './menu/menu-main/menu-main.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { FormsModule } from '@angular/forms';
+
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuMainComponent,
     RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule
+    SocketIoModule.forRoot(config),
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

@@ -3,19 +3,23 @@
     <div class="container-data-client">
         <div class="container-info-client">
             <div class="container-data">
-                Nombre Cliente
+                {{nameUser}}
             </div>
         </div>
 
-        <div class="container-chat">
-            Aqui va la lista de mensajes
+        <div class="container-chat" *ngIf="listMessages">
+            <ul *ngFor="let message of listMessages">
+                <li>
+                    {{message}}
+                </li>
+            </ul>
         </div>
 
         <div class="container-form">
             <form action="">
-                <input placeholder="Escriba un mensaje" class="input-style" type="text">
+                <input placeholder="Escriba un mensaje" class="input-style" type="text" name="message" [(ngModel)]="message">
 
-                <button>Enviar</button>
+                <button (click)="sendMessage()">Enviar</button>
             </form>
         </div>
     </div>
