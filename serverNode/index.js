@@ -1,8 +1,10 @@
 const { Server } = require('socket.io');
+const http = require('http');
 
-const server = new Server({cors: {origin: 'http://localhost:4200'}});
+const serverHttp = http.createServer();
+const io = new Server(serverHttp, {cors: {origin: ['http://localhost', 'http://localhost:4200']}});
 
-server.on('connection', (socket) => {
+io.on('connection', (socket) => {
     console.log('connected');
     socket.on('message', (data) => {
         console.log(data);
@@ -10,4 +12,6 @@ server.on('connection', (socket) => {
     })
 })
 
-server.listen(4000);
+serverHttp.listen(4000, () => {
+    console.log('Servidor de socket.io escuchando en el puerto 4000');
+});
