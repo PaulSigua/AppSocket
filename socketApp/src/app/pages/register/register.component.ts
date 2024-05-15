@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit{
     console.log(this.nombreInput)
   }
 
+  // Metodo para registrarse
   goToChat(){
     this.chatSer.saveName(this.nombreInput);
     console.log(this.nombreInput)
